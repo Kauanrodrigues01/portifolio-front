@@ -1,8 +1,8 @@
 import React from "react";
-import styled from "styled-components";
 import { FiBriefcase } from "react-icons/fi";
-import { ExperienceCard } from "../ExperienceCard";
+import styled from "styled-components";
 import experiencesData from "../../data/experiences.json";
+import { ExperienceCard } from "../ExperienceCard";
 
 const ExperiencesSection = styled.section`
   width: 100%;
@@ -122,7 +122,9 @@ const TimelineText = styled.span`
 `;
 
 const ExperienceSection = styled.div<{ $featured?: boolean }>`
-  ${({ $featured }) => $featured && `
+  ${({ $featured }) =>
+    $featured &&
+    `
     grid-column: 1 / -1;
     
     @media (max-width: 768px) {
@@ -149,8 +151,8 @@ export const Experiences: React.FC = () => {
           </IconWrapper>
           <Title>Experiência Profissional</Title>
           <Subtitle>
-            Minha jornada profissional e as principais experiências que contribuíram 
-            para meu crescimento como desenvolvedor
+            Minha jornada profissional e as principais experiências que
+            contribuíram para meu crescimento como desenvolvedor
           </Subtitle>
         </SectionHeader>
 
@@ -162,8 +164,8 @@ export const Experiences: React.FC = () => {
 
         <ExperiencesGrid>
           {experiences.map((experience) => (
-            <ExperienceSection 
-              key={experience.id} 
+            <ExperienceSection
+              key={experience.id}
               $featured={experience.featured}
             >
               <ExperienceCard

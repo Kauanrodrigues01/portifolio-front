@@ -1,6 +1,6 @@
 import React from "react";
+import { FiBriefcase, FiCalendar, FiMapPin } from "react-icons/fi";
 import styled from "styled-components";
-import { FiMapPin, FiCalendar, FiBriefcase } from "react-icons/fi";
 import { SocialButton } from "../SocialButton";
 
 interface ExperienceCardProps {
@@ -24,8 +24,9 @@ const CardContainer = styled.div<{ $featured?: boolean }>`
   padding: 24px;
   border-radius: 16px;
   background: ${({ theme }) => theme.colors.surface};
-  border: 1px solid ${({ theme, $featured }) => 
-    $featured ? theme.colors.mainBlue : theme.colors.border};
+  border: 1px solid
+    ${({ theme, $featured }) =>
+      $featured ? theme.colors.mainBlue : theme.colors.border};
   cursor: pointer;
   transition: all 0.3s ease;
   position: relative;
@@ -36,7 +37,9 @@ const CardContainer = styled.div<{ $featured?: boolean }>`
     border-color: ${({ theme }) => theme.colors.mainRed};
   }
 
-  ${({ $featured, theme }) => $featured && `
+  ${({ $featured, theme }) =>
+    $featured &&
+    `
     &::before {
       content: 'Destaque';
       position: absolute;
@@ -96,7 +99,7 @@ const MetaInfo = styled.div`
   flex-wrap: wrap;
   gap: 16px;
   margin-bottom: 16px;
-  
+
   @media (max-width: 640px) {
     flex-direction: column;
     gap: 8px;
@@ -124,16 +127,12 @@ const TypeBadge = styled.span<{ $type: string }>`
   font-size: 12px;
   font-weight: 600;
   font-family: ${({ theme }) => theme.fonts.mavenPro};
-  background: ${({ theme, $type }) => 
-    $type === 'Freelancer' 
-      ? theme.colors.mainGreen + '20'
-      : theme.colors.mainBlue + '20'
-  };
-  color: ${({ theme, $type }) => 
-    $type === 'Freelancer' 
-      ? theme.colors.mainGreen
-      : theme.colors.mainBlue
-  };
+  background: ${({ theme, $type }) =>
+    $type === "Freelancer"
+      ? theme.colors.mainGreen + "20"
+      : theme.colors.mainBlue + "20"};
+  color: ${({ theme, $type }) =>
+    $type === "Freelancer" ? theme.colors.mainGreen : theme.colors.mainBlue};
 `;
 
 const Description = styled.p`
@@ -146,7 +145,7 @@ const Description = styled.p`
 
 const Section = styled.div`
   margin-bottom: 16px;
-  
+
   &:last-child {
     margin-bottom: 0;
   }
@@ -185,7 +184,7 @@ const AchievementItem = styled.li`
   position: relative;
 
   &::before {
-    content: '•';
+    content: "•";
     position: absolute;
     left: 0;
     color: ${({ theme }) => theme.colors.mainGreen};
@@ -205,7 +204,7 @@ export const ExperienceCard: React.FC<ExperienceCardProps> = ({
   achievements,
   companyLogo,
   featured = false,
-  onClick
+  onClick,
 }) => {
   return (
     <CardContainer $featured={featured} onClick={onClick}>

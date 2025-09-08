@@ -1,4 +1,6 @@
 export { Contact } from "./Contact";
+export { ExperienceCard } from "./ExperienceCard";
+export { Experiences } from "./Experiences";
 export { Header } from "./Header";
 export { Hero } from "./Hero";
 export { MobileEnhancements } from "./MobileEnhancements";
@@ -7,5 +9,3 @@ export { Projects } from "./Projects";
 export { ScrollToTop } from "./ScrollToTop";
 export { SocialButton } from "./SocialButton";
 export { ThemeToggle } from "./ThemeToggle";
-export { ExperienceCard } from "./ExperienceCard";
-export { Experiences } from "./Experiences";

@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import { Contact } from "../components/Contact";
+import { Experiences } from "../components/Experiences";
 import { Hero } from "../components/Hero";
 import { Projects } from "../components/Projects";
-import { Experiences } from "../components/Experiences";
 
 const PageContainer = styled.div`
   padding-top: 70px; // Espaço para o header fixo
