@@ -98,7 +98,7 @@ export const Projects: React.FC = () => {
   };
 
   return (
-    <ProjectsSection>
+    <ProjectsSection id="projetos">
       <HeaderContainer>
         <SectionTag>Meu trabalho</SectionTag>
         <SectionTitle>Veja os projetos em destaque</SectionTitle>

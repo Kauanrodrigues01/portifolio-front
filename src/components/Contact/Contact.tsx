@@ -159,7 +159,7 @@ const socialLinks: SocialLink[] = [
 
 export const Contact: React.FC = () => {
   return (
-    <ContactSection>
+    <ContactSection id="contato">
       <HeaderContainer>
         <SectionTag>Contato</SectionTag>
         <SectionTitle>Gostou do meu trabalho?</SectionTitle>

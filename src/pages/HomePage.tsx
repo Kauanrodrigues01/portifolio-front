@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Contact } from "../components/Contact";
 import { Hero } from "../components/Hero";
 import { Projects } from "../components/Projects";
+import { Experiences } from "../components/Experiences";
 
 const PageContainer = styled.div`
   padding-top: 70px; // Espaço para o header fixo
@@ -17,6 +18,7 @@ export const HomePage: React.FC = () => {
     <PageContainer>
       <Hero />
       <Projects />
+      <Experiences />
       <Contact />
     </PageContainer>
   );
