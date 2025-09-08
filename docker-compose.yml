@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  portfolio-dev:
+    build: .
+    container_name: kauan-portfolio-dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    stdin_open: true
+    tty: true
+    networks:
+      - portfolio-network
+
+networks:
+  portfolio-network:
+    driver: bridge
