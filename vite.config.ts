@@ -8,6 +8,6 @@ export default defineConfig({
     host: true, // permite acessar por IP ou domínio
     port: 5173, // a porta que você estiver usando (opcional)
     strictPort: true,
-    allowedHosts: ['teste.kauan.space', 'portfolio.kauan.space'] // adicione seus domínios aqui
+    allowedHosts: ['portfolio.kauan.space'] // adicione seus domínios aqui
   }
 })

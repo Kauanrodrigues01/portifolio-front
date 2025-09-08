@@ -8,7 +8,7 @@ const HeaderContainer = styled.header`
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1000;
+  z-index: 1001;
   background: ${({ theme }) => theme.colors.background}95;
   backdrop-filter: blur(10px);
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};

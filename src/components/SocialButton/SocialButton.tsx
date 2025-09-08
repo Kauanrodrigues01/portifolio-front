@@ -1,5 +1,27 @@
 import React from "react";
 import styled from "styled-components";
+// Importando ícones das tecnologias
+import {
+  FaCss3Alt,
+  FaDatabase,
+  FaEnvelope,
+  FaGitAlt,
+  FaHtml5,
+  FaInstagram,
+  FaJs,
+  FaLinkedin,
+  FaPhp,
+  FaPython,
+  FaReact,
+} from "react-icons/fa";
+import {
+  SiDjango,
+  SiFastapi,
+  SiNestjs,
+  SiPostgresql,
+  SiRedis,
+  SiTypescript,
+} from "react-icons/si";
 
 export type ButtonSize = "sm" | "md";
 export type ButtonType =
@@ -34,6 +56,52 @@ interface SocialButtonProps {
   showArrow?: boolean;
   fullWidth?: boolean;
 }
+
+const getTechnologyIcon = (
+  type: ButtonType,
+  size: ButtonSize
+): React.ReactNode => {
+  const iconSize = size === "sm" ? 14 : 18;
+
+  switch (type) {
+    case "Git":
+    case "GitHub":
+      return <FaGitAlt size={iconSize} />;
+    case "PHP":
+      return <FaPhp size={iconSize} />;
+    case "CSS":
+      return <FaCss3Alt size={iconSize} />;
+    case "HTML":
+      return <FaHtml5 size={iconSize} />;
+    case "JS":
+    case "Javascript":
+      return <FaJs size={iconSize} />;
+    case "Python":
+      return <FaPython size={iconSize} />;
+    case "TypeScript":
+      return <SiTypescript size={iconSize} />;
+    case "React":
+      return <FaReact size={iconSize} />;
+    case "Django":
+      return <SiDjango size={iconSize} />;
+    case "FastAPI":
+      return <SiFastapi size={iconSize} />;
+    case "NestJs":
+      return <SiNestjs size={iconSize} />;
+    case "Postgresql":
+      return <SiPostgresql size={iconSize} />;
+    case "Redis":
+      return <SiRedis size={iconSize} />;
+    case "LinkedIn":
+      return <FaLinkedin size={iconSize} />;
+    case "Instagram":
+      return <FaInstagram size={iconSize} />;
+    case "Email":
+      return <FaEnvelope size={iconSize} />;
+    default:
+      return <FaDatabase size={iconSize} />;
+  }
+};
 
 const getTextColor = (type: ButtonType) => {
   switch (type) {
@@ -186,16 +254,16 @@ const ArrowIcon = styled.svg`
   }
 `;
 
-const IconWrapper = styled.div`
-  width: 28px;
-  height: 28px;
-  flex-shrink: 0;
+const IconWrapper = styled.div<{ $size: ButtonSize }>`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 
   svg {
-    filter: brightness(0) invert(1);
+    width: ${(props) => (props.$size === "sm" ? "14px" : "18px")};
+    height: ${(props) => (props.$size === "sm" ? "14px" : "18px")};
+    color: inherit;
   }
 `;
 
@@ -219,6 +287,7 @@ export const SocialButton: React.FC<SocialButtonProps> = ({
   };
 
   const TextComponent = fullWidth ? ContactButtonText : ButtonText;
+  const technologyIcon = getTechnologyIcon(type, size);
 
   return (
     <StyledButton
@@ -227,7 +296,7 @@ export const SocialButton: React.FC<SocialButtonProps> = ({
       fullWidth={fullWidth}
       onClick={handleClick}
     >
-      {icon && <IconWrapper>{icon}</IconWrapper>}
+      <IconWrapper $size={size}>{icon || technologyIcon}</IconWrapper>
       <TextComponent $size={size} $fullWidth={fullWidth}>
         {children}
       </TextComponent>

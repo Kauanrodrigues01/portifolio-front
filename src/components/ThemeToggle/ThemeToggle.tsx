@@ -1,12 +1,24 @@
-import React from 'react';
-import styled from 'styled-components';
-import { useTheme } from '../../contexts/ThemeContext';
+import React from "react";
+import styled from "styled-components";
+import { useTheme } from "../../contexts/ThemeContext";
 
-const ToggleButton = styled.button`
-  position: fixed;
-  top: 24px;
-  right: 24px;
-  z-index: 1000;
+interface ThemeToggleProps {
+  standalone?: boolean;
+}
+
+const ToggleButton = styled.button<{ $standalone?: boolean }>`
+  ${({ $standalone }) =>
+    $standalone
+      ? `
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 1001;
+  `
+      : `
+    position: relative;
+  `}
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,7 +30,7 @@ const ToggleButton = styled.button`
   box-shadow: ${({ theme }) => theme.shadows.md};
   cursor: pointer;
   transition: all ${({ theme }) => theme.transitions.normal};
-  
+
   &:hover {
     transform: scale(1.05);
     box-shadow: ${({ theme }) => theme.shadows.lg};
@@ -31,8 +43,13 @@ const ToggleButton = styled.button`
   @media (max-width: 768px) {
     width: 48px;
     height: 48px;
-    top: 20px;
-    right: 20px;
+
+    ${({ $standalone }) =>
+      $standalone &&
+      `
+      top: 20px;
+      right: 20px;
+    `}
   }
 `;
 
@@ -46,7 +63,13 @@ const IconWrapper = styled.div`
 `;
 
 const SunIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path
       d="M12 17.5C15.0376 17.5 17.5 15.0376 17.5 12C17.5 8.96243 15.0376 6.5 12 6.5C8.96243 6.5 6.5 8.96243 6.5 12C6.5 15.0376 8.96243 17.5 12 17.5Z"
       stroke="currentColor"
@@ -114,7 +137,13 @@ const SunIcon = () => (
 );
 
 const MoonIcon = () => (
-  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <svg
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path
       d="M21 12.79A9 9 0 1 1 11.21 3A7 7 0 0 0 21 12.79Z"
       stroke="currentColor"
@@ -126,7 +155,7 @@ const MoonIcon = () => (
 );
 
 const StyledIcon = styled.div<{ $isLight: boolean }>`
-  color: ${({ theme, $isLight }) => 
+  color: ${({ theme, $isLight }) =>
     $isLight ? theme.colors.mainYellow : theme.colors.mainBlue};
   display: flex;
   align-items: center;
@@ -134,15 +163,18 @@ const StyledIcon = styled.div<{ $isLight: boolean }>`
   transition: color ${({ theme }) => theme.transitions.normal};
 `;
 
-export const ThemeToggle: React.FC = () => {
+export const ThemeToggle: React.FC<ThemeToggleProps> = ({
+  standalone = false,
+}) => {
   const { mode, toggleTheme } = useTheme();
-  const isLight = mode === 'light';
+  const isLight = mode === "light";
 
   return (
-    <ToggleButton 
-      onClick={toggleTheme} 
-      title={`Alternar para tema ${isLight ? 'escuro' : 'claro'}`}
-      aria-label={`Alternar para tema ${isLight ? 'escuro' : 'claro'}`}
+    <ToggleButton
+      $standalone={standalone}
+      onClick={toggleTheme}
+      title={`Alternar para tema ${isLight ? "escuro" : "claro"}`}
+      aria-label={`Alternar para tema ${isLight ? "escuro" : "claro"}`}
     >
       <IconWrapper>
         <StyledIcon $isLight={isLight}>
