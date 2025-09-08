@@ -507,7 +507,7 @@ export const AssistantPage: React.FC = () => {
               <p>
                 {isConnected === false
                   ? "A API está offline no momento. Tente novamente mais tarde."
-                  : "Sou seu assistente virtual. Pode me perguntar qualquer coisa sobre desenvolvimento, projetos ou tecnologias que uso."}
+                  : "Sou assistente virtual do Kauan. Pode me perguntar qualquer coisa sobre desenvolvimento, projetos, tecnologias, experiências profissionais do Kauan."}
               </p>
               <SuggestionButtons>
                 {suggestions.map((suggestion, index) => (
