@@ -251,7 +251,7 @@ const technologies: { type: ButtonType; label: string }[] = [
 
 export const Hero: React.FC = () => {
   return (
-    <HeroSection>
+    <HeroSection id="hero">
       <InfoContainer>
         <HeaderContainer>
           <AvatarWrapper>

@@ -63,47 +63,8 @@ const NavLinks = styled.div`
   display: flex;
   gap: 24px;
 
-  @media (max-width: 640px) {
+  @media (max-width: 480px) {
     gap: 16px;
-  }
-`;
-
-const ScrollLink = styled.a<{ $isActive: boolean }>`
-  position: relative;
-  font-family: ${({ theme }) => theme.fonts.mavenPro};
-  font-size: 1rem;
-  font-weight: 500;
-  color: ${({ theme, $isActive }) =>
-    $isActive ? theme.colors.mainRed : theme.colors.textSecondary};
-  text-decoration: none;
-  transition: all 0.3s ease;
-  padding: 8px 16px;
-  border-radius: 20px;
-  background: ${({ theme, $isActive }) =>
-    $isActive ? `${theme.colors.mainRed}10` : "transparent"};
-  cursor: pointer;
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.mainRed};
-    background: ${({ theme }) => theme.colors.mainRed}10;
-    transform: translateY(-1px);
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: ${({ $isActive }) => ($isActive ? "100%" : "0")};
-    height: 2px;
-    background: ${({ theme }) => theme.colors.mainRed};
-    transition: width 0.3s ease;
-  }
-
-  @media (max-width: 640px) {
-    font-size: 0.9rem;
-    padding: 6px 12px;
   }
 `;
 
@@ -139,7 +100,7 @@ const NavLink = styled(Link)<{ $isActive: boolean }>`
     transition: width 0.3s ease;
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 480px) {
     font-size: 0.9rem;
     padding: 6px 12px;
   }
@@ -152,19 +113,6 @@ const ThemeToggleWrapper = styled.div`
 
 export const Header: React.FC = () => {
   const location = useLocation();
-  const isHomePage = location.pathname === "/";
-
-  const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const headerHeight = 70;
-      const elementPosition = element.offsetTop - headerHeight;
-      window.scrollTo({
-        top: elementPosition,
-        behavior: "smooth",
-      });
-    }
-  };
 
   return (
     <HeaderContainer>
@@ -172,31 +120,12 @@ export const Header: React.FC = () => {
 
       <Navigation>
         <NavLinks>
-          <NavLink to="/" $isActive={location.pathname === "/"}>
+          <NavLink 
+            to="/" 
+            $isActive={location.pathname === "/"}
+          >
             Home
           </NavLink>
-          {isHomePage && (
-            <>
-              <ScrollLink
-                $isActive={false}
-                onClick={() => scrollToSection("projetos")}
-              >
-                Projetos
-              </ScrollLink>
-              <ScrollLink
-                $isActive={false}
-                onClick={() => scrollToSection("experiencias")}
-              >
-                Experiências
-              </ScrollLink>
-              <ScrollLink
-                $isActive={false}
-                onClick={() => scrollToSection("contato")}
-              >
-                Contato
-              </ScrollLink>
-            </>
-          )}
           <NavLink
             to="/assistant"
             $isActive={location.pathname === "/assistant"}

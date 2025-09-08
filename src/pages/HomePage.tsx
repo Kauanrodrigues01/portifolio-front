@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Contact } from "../components/Contact";
 import { Experiences } from "../components/Experiences";
+import { FloatingNavigation } from "../components/FloatingNavigation";
 import { Hero } from "../components/Hero";
 import { Projects } from "../components/Projects";
 
@@ -20,6 +21,7 @@ export const HomePage: React.FC = () => {
       <Projects />
       <Experiences />
       <Contact />
+      <FloatingNavigation />
     </PageContainer>
   );
 };

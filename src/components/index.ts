@@ -1,6 +1,7 @@
 export { Contact } from "./Contact";
 export { ExperienceCard } from "./ExperienceCard";
 export { Experiences } from "./Experiences";
+export { FloatingNavigation } from "./FloatingNavigation";
 export { Header } from "./Header";
 export { Hero } from "./Hero";
 export { MobileEnhancements } from "./MobileEnhancements";
