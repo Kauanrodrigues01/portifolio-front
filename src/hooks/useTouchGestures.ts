@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
 
 interface TouchGestureOptions {
   onSwipeLeft?: () => void;
@@ -35,13 +35,13 @@ export const useTouchGestures = (options: TouchGestureOptions = {}) => {
     onLongPress,
     onPinch,
     threshold = 50,
-    longPressDelay = 500
+    longPressDelay = 500,
   } = options;
 
   const ref = useRef<HTMLElement>(null);
   const [touchData, setTouchData] = useState<TouchData | null>(null);
   const [lastTapTime, setLastTapTime] = useState(0);
-  const longPressTimer = useRef<NodeJS.Timeout | null>(null);
+  const longPressTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const initialDistance = useRef<number>(0);
 
   useEffect(() => {
@@ -51,7 +51,7 @@ export const useTouchGestures = (options: TouchGestureOptions = {}) => {
     const handleTouchStart = (e: TouchEvent) => {
       const touch = e.touches[0];
       const now = Date.now();
-      
+
       // Handle multi-touch for pinch
       if (e.touches.length === 2) {
         const touch1 = e.touches[0];
@@ -71,7 +71,7 @@ export const useTouchGestures = (options: TouchGestureOptions = {}) => {
         startTime: now,
         endTime: now,
         distance: 0,
-        direction: ''
+        direction: "",
       };
 
       setTouchData(newTouchData);
@@ -101,7 +101,7 @@ export const useTouchGestures = (options: TouchGestureOptions = {}) => {
           touch2.clientX - touch1.clientX,
           touch2.clientY - touch1.clientY
         );
-        
+
         if (initialDistance.current > 0) {
           const scale = currentDistance / initialDistance.current;
           onPinch(scale);
@@ -110,15 +110,19 @@ export const useTouchGestures = (options: TouchGestureOptions = {}) => {
       }
 
       const touch = e.touches[0];
-      setTouchData(prev => prev ? {
-        ...prev,
-        endX: touch.clientX,
-        endY: touch.clientY,
-        endTime: Date.now()
-      } : null);
+      setTouchData((prev) =>
+        prev
+          ? {
+              ...prev,
+              endX: touch.clientX,
+              endY: touch.clientY,
+              endTime: Date.now(),
+            }
+          : null
+      );
     };
 
-    const handleTouchEnd = (e: TouchEvent) => {
+    const handleTouchEnd = (_: TouchEvent) => {
       // Clear long press timer
       if (longPressTimer.current) {
         clearTimeout(longPressTimer.current);
@@ -172,20 +176,33 @@ export const useTouchGestures = (options: TouchGestureOptions = {}) => {
     };
 
     // Add event listeners
-    element.addEventListener('touchstart', handleTouchStart, { passive: true });
-    element.addEventListener('touchmove', handleTouchMove, { passive: true });
-    element.addEventListener('touchend', handleTouchEnd, { passive: true });
+    element.addEventListener("touchstart", handleTouchStart, { passive: true });
+    element.addEventListener("touchmove", handleTouchMove, { passive: true });
+    element.addEventListener("touchend", handleTouchEnd, { passive: true });
 
     return () => {
-      element.removeEventListener('touchstart', handleTouchStart);
-      element.removeEventListener('touchmove', handleTouchMove);
-      element.removeEventListener('touchend', handleTouchEnd);
-      
+      element.removeEventListener("touchstart", handleTouchStart);
+      element.removeEventListener("touchmove", handleTouchMove);
+      element.removeEventListener("touchend", handleTouchEnd);
+
       if (longPressTimer.current) {
         clearTimeout(longPressTimer.current);
       }
     };
-  }, [touchData, lastTapTime, onSwipeLeft, onSwipeRight, onSwipeUp, onSwipeDown, onTap, onDoubleTap, onLongPress, onPinch, threshold, longPressDelay]);
+  }, [
+    touchData,
+    lastTapTime,
+    onSwipeLeft,
+    onSwipeRight,
+    onSwipeUp,
+    onSwipeDown,
+    onTap,
+    onDoubleTap,
+    onLongPress,
+    onPinch,
+    threshold,
+    longPressDelay,
+  ]);
 
   return ref;
 };
@@ -193,15 +210,18 @@ export const useTouchGestures = (options: TouchGestureOptions = {}) => {
 // Hook for smooth mobile scrolling with momentum
 export const useMobileScroll = () => {
   useEffect(() => {
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    
+    const isMobile =
+      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+        navigator.userAgent
+      );
+
     if (isMobile) {
       // Enable smooth scrolling with momentum on iOS
-      document.body.style.webkitOverflowScrolling = 'touch';
-      
+      document.body.style.webkitOverflowScrolling = "touch";
+
       // Prevent overscroll bounce on the entire page
-      document.body.style.overscrollBehavior = 'none';
-      
+      document.body.style.overscrollBehavior = "none";
+
       // Optimize touch events
       const preventDefaultTouchMove = (e: TouchEvent) => {
         // Allow scrolling but prevent other default behaviors
@@ -210,12 +230,14 @@ export const useMobileScroll = () => {
         }
       };
 
-      document.addEventListener('touchmove', preventDefaultTouchMove, { passive: false });
+      document.addEventListener("touchmove", preventDefaultTouchMove, {
+        passive: false,
+      });
 
       return () => {
-        document.removeEventListener('touchmove', preventDefaultTouchMove);
-        document.body.style.webkitOverflowScrolling = '';
-        document.body.style.overscrollBehavior = '';
+        document.removeEventListener("touchmove", preventDefaultTouchMove);
+        document.body.style.webkitOverflowScrolling = "";
+        document.body.style.overscrollBehavior = "";
       };
     }
   }, []);
@@ -227,16 +249,16 @@ export const useMobileViewport = () => {
     const setViewportHeight = () => {
       // Set CSS custom property for mobile viewport height
       const vh = window.innerHeight * 0.01;
-      document.documentElement.style.setProperty('--vh', `${vh}px`);
+      document.documentElement.style.setProperty("--vh", `${vh}px`);
     };
 
     setViewportHeight();
-    window.addEventListener('resize', setViewportHeight);
-    window.addEventListener('orientationchange', setViewportHeight);
+    window.addEventListener("resize", setViewportHeight);
+    window.addEventListener("orientationchange", setViewportHeight);
 
     return () => {
-      window.removeEventListener('resize', setViewportHeight);
-      window.removeEventListener('orientationchange', setViewportHeight);
+      window.removeEventListener("resize", setViewportHeight);
+      window.removeEventListener("orientationchange", setViewportHeight);
     };
   }, []);
 };
