@@ -1,92 +1,63 @@
+const API_BASE_URL = "https://rag-api.kauan.space";
+
 interface ApiResponse {
   answer: string;
   sources?: string[];
-  error?: string;
-}
-
-interface ApiError {
-  message: string;
-  status?: number;
 }
 
 export class AssistantApiService {
-  private baseUrl: string;
-
-  constructor(baseUrl: string = 'http://localhost:8000') {
-    this.baseUrl = baseUrl;
-  }
+  private baseUrl = API_BASE_URL;
 
   async askQuestion(question: string): Promise<string> {
     try {
+      console.log(
+        `Fazendo requisição para: ${this.baseUrl}/api/rag/ask-question`
+      );
+      console.log(`Pergunta: ${question}`);
+
       const response = await fetch(`${this.baseUrl}/api/rag/ask-question`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ question }),
       });
 
+      console.log(`Status da resposta: ${response.status}`);
+
       if (!response.ok) {
-        const errorData = await response.json().catch(() => ({}));
-        throw new ApiError({
-          message: errorData.message || `Erro HTTP: ${response.status}`,
-          status: response.status,
-        });
+        throw new Error(
+          `Erro na API: ${response.status} - ${response.statusText}`
+        );
       }
 
       const data: ApiResponse = await response.json();
-      
-      if (data.error) {
-        throw new ApiError({
-          message: data.error,
-        });
-      }
+      console.log("Resposta da API:", data);
 
-      return data.answer || 'Desculpe, não consegui gerar uma resposta para sua pergunta.';
+      return data.answer || "Não consegui gerar uma resposta.";
     } catch (error) {
-      if (error instanceof ApiError) {
-        throw error;
-      }
-
-      // Erro de rede ou outros erros
-      if (error instanceof TypeError && error.message.includes('fetch')) {
-        throw new ApiError({
-          message: 'Não foi possível conectar com o servidor. Verifique se a API está rodando em http://localhost:8000',
-        });
-      }
-
-      throw new ApiError({
-        message: 'Erro inesperado ao processar sua pergunta. Tente novamente.',
-      });
+      console.error("Erro na API:", error);
+      throw new Error(
+        error instanceof Error ? error.message : "Erro ao conectar com a API"
+      );
     }
   }
 
-  // Método para testar conectividade com a API
-  async testConnection(): Promise<boolean> {
+  async checkHealth(): Promise<boolean> {
     try {
-      const response = await fetch(`${this.baseUrl}/health`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
+      console.log(`Verificando saúde da API: ${this.baseUrl}/health`);
+      const response = await fetch(`${this.baseUrl}/health`);
+      console.log(`Health check status: ${response.status}`);
       return response.ok;
-    } catch {
+    } catch (error) {
+      console.error("Erro no health check:", error);
       return false;
     }
   }
-}
 
-// Instância singleton do serviço
-export const assistantApi = new AssistantApiService();
-
-// Classe de erro customizada
-class ApiError extends Error {
-  status?: number;
-
-  constructor({ message, status }: { message: string; status?: number }) {
-    super(message);
-    this.name = 'ApiError';
-    this.status = status;
+  getBaseUrl(): string {
+    return this.baseUrl;
   }
 }
+
+export const assistantApi = new AssistantApiService();

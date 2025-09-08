@@ -61,8 +61,8 @@ const ConnectionStatus = styled.div<{ $connected: boolean | null }>`
     height: 8px;
     border-radius: 50%;
     background: ${({ $connected }) => {
-      if ($connected === null) return '#fbbf24'; // amarelo para carregando
-      return $connected ? '#10b981' : '#ef4444'; // verde para conectado, vermelho para desconectado
+      if ($connected === null) return "#fbbf24"; // amarelo para carregando
+      return $connected ? "#10b981" : "#ef4444"; // verde para conectado, vermelho para desconectado
     }};
   }
 
@@ -79,14 +79,6 @@ const ChatTitle = styled.h1`
   font-weight: 700;
   color: ${({ theme }) => theme.colors.text};
   margin: 0 0 8px 0;
-  background: linear-gradient(
-    135deg,
-    ${({ theme }) => theme.colors.mainRed},
-    ${({ theme }) => theme.colors.mainPurple}
-  );
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 
   @media (max-width: 768px) {
     font-size: 1.5rem;
@@ -133,7 +125,10 @@ const MessagesContainer = styled.div`
   }
 `;
 
-const MessageBubble = styled.div<{ $sender: "user" | "ai"; $isError?: boolean }>`
+const MessageBubble = styled.div<{
+  $sender: "user" | "ai";
+  $isError?: boolean;
+}>`
   max-width: 70%;
   padding: 16px 20px;
   border-radius: 20px;
@@ -154,7 +149,7 @@ const MessageBubble = styled.div<{ $sender: "user" | "ai"; $isError?: boolean }>
         border-bottom-left-radius: 8px;
       `;
     }
-    
+
     return $sender === "user"
       ? `
         align-self: flex-end;
@@ -381,7 +376,7 @@ const SuggestionButton = styled.button`
 
 const suggestions = [
   "Fale sobre suas tecnologias favoritas",
-  "Como posso entrar em contato?", 
+  "Como posso entrar em contato?",
   "Quais projetos você desenvolveu?",
   "Conte sobre sua experiência",
 ];
@@ -406,7 +401,7 @@ export const AssistantPage: React.FC = () => {
   useEffect(() => {
     const testApiConnection = async () => {
       try {
-        const connected = await assistantApi.testConnection();
+        const connected = await assistantApi.checkHealth();
         setIsConnected(connected);
       } catch {
         setIsConnected(false);
@@ -434,7 +429,7 @@ export const AssistantPage: React.FC = () => {
     try {
       // Tentar usar a API real
       const response = await assistantApi.askQuestion(messageText);
-      
+
       const aiResponse: Message = {
         id: (Date.now() + 1).toString(),
         text: response,
@@ -448,7 +443,10 @@ export const AssistantPage: React.FC = () => {
       // Em caso de erro, mostrar mensagem de erro
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
-        text: error instanceof Error ? error.message : 'Erro desconhecido ao processar sua pergunta.',
+        text:
+          error instanceof Error
+            ? error.message
+            : "Erro desconhecido ao processar sua pergunta.",
         sender: "ai",
         timestamp: new Date(),
         isError: true,
@@ -490,12 +488,11 @@ export const AssistantPage: React.FC = () => {
       <ChatContainer>
         <ChatHeader>
           <ConnectionStatus $connected={isConnected}>
-            {isConnected === null 
-              ? 'Verificando conexão...' 
-              : isConnected 
-                ? 'Conectado à API' 
-                : 'API offline - Verifique se está rodando em localhost:8000'
-            }
+            {isConnected === null
+              ? "Verificando conexão..."
+              : isConnected
+              ? "Conectado à API"
+              : "API offline"}
           </ConnectionStatus>
           <ChatTitle>🤖 AI Assistant</ChatTitle>
           <ChatSubtitle>
@@ -508,10 +505,9 @@ export const AssistantPage: React.FC = () => {
             <EmptyState>
               <h3>👋 Olá! Como posso ajudar?</h3>
               <p>
-                {isConnected === false 
-                  ? 'A API está offline. Certifique-se de que o servidor está rodando em http://localhost:8000 para obter respostas da IA.'
-                  : 'Sou seu assistente virtual. Pode me perguntar qualquer coisa sobre desenvolvimento, projetos ou tecnologias que uso.'
-                }
+                {isConnected === false
+                  ? "A API está offline no momento. Tente novamente mais tarde."
+                  : "Sou seu assistente virtual. Pode me perguntar qualquer coisa sobre desenvolvimento, projetos ou tecnologias que uso."}
               </p>
               <SuggestionButtons>
                 {suggestions.map((suggestion, index) => (
@@ -528,7 +524,7 @@ export const AssistantPage: React.FC = () => {
             <>
               {messages.map((message) => (
                 <div key={message.id}>
-                  <MessageBubble 
+                  <MessageBubble
                     $sender={message.sender}
                     $isError={message.isError}
                   >
