@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { FiChevronUp, FiRefreshCw } from "react-icons/fi";
 import styled from "styled-components";
 
 // Mobile scroll indicator
@@ -48,14 +49,14 @@ const BackToTopButton = styled.button<{ $visible: boolean }>`
       $visible ? "scale(0.9) translateY(0)" : "translateY(100px)"};
   }
 
+  @media (min-width: 769px) {
+    display: none;
+  }
+
   svg {
     width: 24px;
     height: 24px;
     color: white;
-  }
-
-  @media (min-width: 769px) {
-    display: none;
   }
 `;
 
@@ -247,36 +248,13 @@ export const MobileEnhancements: React.FC<MobileEnhancementsProps> = ({
       <ScrollIndicator $progress={scrollProgress} />
 
       <PullToRefreshIndicator $pulling={pulling} $distance={pullDistance}>
-        <svg viewBox="0 0 24 24" fill="none">
-          <path
-            d="M1 4v6h6M23 20v-6h-6"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-          <path
-            d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <FiRefreshCw />
       </PullToRefreshIndicator>
 
       <LoadingSpinner $visible={loading} />
 
       <BackToTopButton $visible={showBackToTop} onClick={scrollToTop}>
-        <svg viewBox="0 0 24 24" fill="none">
-          <path
-            d="M18 15l-6-6-6 6"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </svg>
+        <FiChevronUp />
       </BackToTopButton>
 
       <div id="hero">{children}</div>

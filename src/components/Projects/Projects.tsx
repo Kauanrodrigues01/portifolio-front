@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import projectsData from "../../data/projects.json";
 import { ProjectCard } from "../ProjectCard";
-import { ProjectDetails, ProjectModal } from "../ProjectModal";
 
 const ProjectsSection = styled.section`
   display: flex;
@@ -91,47 +91,30 @@ const GridContainer = styled.div`
 `;
 
 export const Projects: React.FC = () => {
-  const [selectedProject, setSelectedProject] = useState<ProjectDetails | null>(
-    null
-  );
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
 
-  const handleProjectClick = (project: ProjectDetails) => {
-    setSelectedProject(project);
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-    setTimeout(() => setSelectedProject(null), 300); // Wait for animation
+  const handleProjectClick = (projectId: number) => {
+    navigate(`/projeto/${projectId}`);
   };
 
   return (
-    <>
-      <ProjectsSection>
-        <HeaderContainer>
-          <SectionTag>Meu trabalho</SectionTag>
-          <SectionTitle>Veja os projetos em destaque</SectionTitle>
-        </HeaderContainer>
-        <GridContainer>
-          {projectsData.map((project) => (
-            <ProjectCard
-              key={project.id}
-              title={project.title}
-              description={project.description}
-              image={project.image}
-              technologies={project.technologies as any}
-              onClick={() => handleProjectClick(project as any)}
-            />
-          ))}
-        </GridContainer>
-      </ProjectsSection>
-
-      <ProjectModal
-        project={selectedProject}
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-      />
-    </>
+    <ProjectsSection>
+      <HeaderContainer>
+        <SectionTag>Meu trabalho</SectionTag>
+        <SectionTitle>Veja os projetos em destaque</SectionTitle>
+      </HeaderContainer>
+      <GridContainer>
+        {projectsData.map((project) => (
+          <ProjectCard
+            key={project.id}
+            title={project.title}
+            description={project.description}
+            image={project.image}
+            technologies={project.technologies as any}
+            onClick={() => handleProjectClick(project.id)}
+          />
+        ))}
+      </GridContainer>
+    </ProjectsSection>
   );
 };
