@@ -21,6 +21,12 @@ import {
   SiPostgresql,
   SiRedis,
   SiTypescript,
+  SiDocker,
+  SiSqlalchemy,
+  SiStreamlit,
+  SiSqlite,
+  SiOpenai,
+  SiLangchain,
 } from "react-icons/si";
 
 export type ButtonSize = "sm" | "md";
@@ -42,7 +48,13 @@ export type ButtonType =
   | "React"
   | "NestJs"
   | "Postgresql"
-  | "Redis";
+  | "Redis"
+  | "Docker"
+  | "SQLAlchemy"
+  | "Streamlit"
+  | "LangChain"
+  | "OpenAI"
+  | "SQLite";
 export type ButtonStatus = "Default";
 
 interface SocialButtonProps {
@@ -92,6 +104,18 @@ const getTechnologyIcon = (
       return <SiPostgresql size={iconSize} />;
     case "Redis":
       return <SiRedis size={iconSize} />;
+    case "Docker":
+      return <SiDocker size={iconSize} />;
+    case "SQLAlchemy":
+      return <SiSqlalchemy size={iconSize} />;
+    case "Streamlit":
+      return <SiStreamlit size={iconSize} />;
+    case "LangChain":
+      return <SiLangchain size={iconSize} />;
+    case "OpenAI":
+      return <SiOpenai size={iconSize} />;
+    case "SQLite":
+      return <SiSqlite size={iconSize} />;
     case "LinkedIn":
       return <FaLinkedin size={iconSize} />;
     case "Instagram":
@@ -144,6 +168,18 @@ const getBackgroundColor = (type: ButtonType) => {
       return "#316192";
     case "Redis":
       return "#DC382D";
+    case "Docker":
+      return "#2496ED";
+    case "SQLAlchemy":
+      return "#D71F00";
+    case "Streamlit":
+      return "#FF4B4B";
+    case "LangChain":
+      return "#1C3C3C";
+    case "OpenAI":
+      return "#412991";
+    case "SQLite":
+      return "#003B57";
     case "LinkedIn":
       return "#0077B5";
     case "Instagram":
