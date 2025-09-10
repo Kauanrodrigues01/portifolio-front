@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FiArrowLeft, FiExternalLink, FiGithub, FiX } from "react-icons/fi";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
@@ -70,6 +70,7 @@ const ProjectImage = styled.img`
   width: 100%;
   height: 400px;
   object-fit: cover;
+  object-position: top center;
   border-radius: 16px;
   box-shadow: ${({ theme }) => theme.shadows.lg};
   cursor: pointer;
@@ -440,9 +441,9 @@ export const ProjectDetailsPage: React.FC = () => {
         </BackButton>
 
         <ProjectHeader>
-          <ProjectImage 
-            src={project.image} 
-            alt={project.title} 
+          <ProjectImage
+            src={project.image}
+            alt={project.title}
             onClick={handleImageClick}
             title="Clique para ampliar a imagem"
           />
