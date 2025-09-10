@@ -16,18 +16,19 @@ import {
 } from "react-icons/fa";
 import {
   SiDjango,
+  SiDocker,
   SiFastapi,
+  SiLangchain,
   SiNestjs,
+  SiOpenai,
   SiPostgresql,
   SiRedis,
-  SiTypescript,
-  SiDocker,
   SiSqlalchemy,
-  SiStreamlit,
   SiSqlite,
-  SiOpenai,
-  SiLangchain,
+  SiStreamlit,
+  SiTypescript,
 } from "react-icons/si";
+import { VscJson } from "react-icons/vsc";
 
 export type ButtonSize = "sm" | "md";
 export type ButtonType =
@@ -44,6 +45,7 @@ export type ButtonType =
   | "Javascript"
   | "TypeScript"
   | "Django"
+  | "Django REST Framework"
   | "FastAPI"
   | "React"
   | "NestJs"
@@ -54,7 +56,8 @@ export type ButtonType =
   | "Streamlit"
   | "LangChain"
   | "OpenAI"
-  | "SQLite";
+  | "SQLite"
+  | "ChromaDB";
 export type ButtonStatus = "Default";
 
 interface SocialButtonProps {
@@ -96,6 +99,8 @@ const getTechnologyIcon = (
       return <FaReact size={iconSize} />;
     case "Django":
       return <SiDjango size={iconSize} />;
+    case "Django REST Framework":
+      return <SiDjango size={iconSize} />;
     case "FastAPI":
       return <SiFastapi size={iconSize} />;
     case "NestJs":
@@ -116,6 +121,8 @@ const getTechnologyIcon = (
       return <SiOpenai size={iconSize} />;
     case "SQLite":
       return <SiSqlite size={iconSize} />;
+    case "ChromaDB":
+      return <VscJson size={iconSize} />;
     case "LinkedIn":
       return <FaLinkedin size={iconSize} />;
     case "Instagram":
@@ -158,6 +165,8 @@ const getBackgroundColor = (type: ButtonType) => {
       return "#3178C6";
     case "Django":
       return "#092E20";
+    case "Django REST Framework":
+      return "#c41e3a";
     case "FastAPI":
       return "#009688";
     case "React":
@@ -180,6 +189,8 @@ const getBackgroundColor = (type: ButtonType) => {
       return "#412991";
     case "SQLite":
       return "#003B57";
+    case "ChromaDB":
+      return "#FF6B6B"; // Cor coral para ChromaDB
     case "LinkedIn":
       return "#0077B5";
     case "Instagram":

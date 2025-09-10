@@ -126,6 +126,7 @@
     "technologies": [
       "Python",
       "Django",
+      "Django REST Framework",
       "Postgresql",
       "Docker",
       "Git"
@@ -157,5 +158,79 @@
     "duration": "3 meses",
     "liveUrl": "",
     "githubUrl": "https://github.com/Kauanrodrigues01/flix-api"
+  },
+  {
+    "id": 5,
+    "title": "Chatbot RAG PDF",
+    "description": "Chatbot inteligente para responder perguntas baseadas em documentos PDF utilizando RAG (Retrieval-Augmented Generation).",
+    "fullDescription": "Chatbot RAG PDF é uma aplicação web interativa desenvolvida com Streamlit e LangChain, que utiliza a técnica de Retrieval-Augmented Generation (RAG) para responder perguntas com base em documentos PDF enviados pelo usuário. O projeto inclui processamento de documentos, chunking, vetorização com ChromaDB, integração com modelos OpenAI (como GPT-4) e uma interface amigável para upload de arquivos e consulta semântica. A aplicação é modular, segura e utiliza boas práticas de desenvolvimento, como variáveis de ambiente e validação de entradas.",
+    "image": "https://raw.githubusercontent.com/Kauanrodrigues01/Kauanrodrigues01/refs/heads/main/images/projetos/chatbot-com-ia/page.png",
+    "technologies": [
+      "Python",
+      "Streamlit",
+      "LangChain",
+      "ChromaDB",
+      "OpenAI"
+    ],
+    "features": [
+      "Upload de arquivos PDF via interface web",
+      "Processamento e chunking de documentos",
+      "Vetorização de chunks com embeddings OpenAI",
+      "Persistência de vetores com ChromaDB",
+      "Consulta semântica com modelos GPT-3.5 e GPT-4",
+      "Exibição de respostas com contexto em markdown",
+      "Histórico de mensagens gerenciado por sessão",
+      "Configuração de variáveis de ambiente para segurança",
+      "Interface interativa e responsiva com Streamlit"
+    ],
+    "challenges": [
+      "Implementação de chunking eficiente para grandes documentos",
+      "Integração com ChromaDB para persistência de vetores",
+      "Configuração de variáveis de ambiente para segurança e flexibilidade",
+      "Otimização de consultas semânticas para respostas rápidas",
+      "Gerenciamento de histórico de mensagens com Streamlit"
+    ],
+    "category": "Chatbot com IA",
+    "year": "2025",
+    "duration": "2 meses",
+    "liveUrl": "",
+    "githubUrl": "https://github.com/Kauanrodrigues01/chatbot-rag-pdf"
+  },
+  {
+    "id": 6,
+    "title": "Flix App",
+    "description": "Aplicação web desenvolvida com Streamlit que consome a Flix API para gerenciamento de filmes, oferecendo catálogo interativo, dashboards e sistema de avaliações.",
+    "fullDescription": "Flix App é uma aplicação web moderna desenvolvida com Streamlit que consome a Flix API (Django REST Framework), permitindo aos usuários explorar um catálogo completo de filmes, fazer buscas avançadas, filtrar conteúdos, visualizar detalhes e avaliar filmes. O sistema conta com autenticação JWT, dashboards interativos com gráficos Plotly, gerenciamento completo de filmes/atores/gêneros, e interface responsiva. A aplicação segue arquitetura modular com separação de responsabilidades, incluindo módulos específicos para cada funcionalidade e integração robusta com a API backend.",
+    "image": "https://raw.githubusercontent.com/Kauanrodrigues01/Kauanrodrigues01/refs/heads/main/images/projetos/flix-app/desktop.jpeg",
+    "technologies": [
+      "Python",
+      "Streamlit",
+      "Plotly",
+      "Requests"
+    ],
+    "features": [
+      "Sistema de autenticação com JWT tokens",
+      "Catálogo completo de filmes consumindo Flix API",
+      "Busca avançada e filtragem por gênero e popularidade",
+      "Dashboard interativo com gráficos Plotly",
+      "Gerenciamento CRUD de filmes, atores e gêneros",
+      "Sistema completo de avaliações e reviews",
+      "Interface responsiva para desktop e mobile",
+      "Visualização de estatísticas em tempo real",
+      "Cache inteligente para otimização de performance",
+      "Arquitetura modular com separação de responsabilidades"
+    ],
+    "challenges": [
+      "Integração segura com API Django REST Framework via JWT",
+      "Implementação de cache de sessão para otimização de performance",
+      "Desenvolvimento de interface responsiva com Streamlit",
+      "Criação de dashboards interativos com visualização de dados",
+      "Arquitetura modular com separação clara de responsabilidades"
+    ],
+    "category": "Web Application",
+    "year": "2025",
+    "duration": "2-3 meses",
+    "liveUrl": "",
+    "githubUrl": "https://github.com/Kauanrodrigues01/flix-app"
   }
 ]
