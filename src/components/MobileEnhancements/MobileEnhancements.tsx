@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FiChevronUp, FiRefreshCw } from "react-icons/fi";
+import { FiRefreshCw } from "react-icons/fi";
 import styled from "styled-components";
 
 // Mobile scroll indicator
@@ -20,43 +20,6 @@ const ScrollIndicator = styled.div<{ $progress: number }>`
 
   @media (min-width: 769px) {
     display: none;
-  }
-`;
-
-// Back to top button for mobile
-const BackToTopButton = styled.button<{ $visible: boolean }>`
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: ${({ theme }) => theme.colors.mainBlue};
-  border: none;
-  box-shadow: ${({ theme }) => theme.shadows.lg};
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 998;
-  opacity: ${({ $visible }) => ($visible ? 1 : 0)};
-  transform: ${({ $visible }) =>
-    $visible ? "translateY(0)" : "translateY(100px)"};
-  transition: all ${({ theme }) => theme.transitions.normal};
-
-  &:active {
-    transform: ${({ $visible }) =>
-      $visible ? "scale(0.9) translateY(0)" : "translateY(100px)"};
-  }
-
-  @media (min-width: 769px) {
-    display: none;
-  }
-
-  svg {
-    width: 24px;
-    height: 24px;
-    color: white;
   }
 `;
 
@@ -163,7 +126,6 @@ export const MobileEnhancements: React.FC<MobileEnhancementsProps> = ({
   children,
 }) => {
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [showBackToTop, setShowBackToTop] = useState(false);
   const [loading, setLoading] = useState(false);
   const [pulling, setPulling] = useState(false);
   const [pullDistance, setPullDistance] = useState(0);
@@ -175,7 +137,6 @@ export const MobileEnhancements: React.FC<MobileEnhancementsProps> = ({
         document.documentElement.scrollHeight - window.innerHeight;
       const currentProgress = (window.scrollY / totalHeight) * 100;
       setScrollProgress(Math.min(currentProgress, 100));
-      setShowBackToTop(window.scrollY > 300);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -239,10 +200,6 @@ export const MobileEnhancements: React.FC<MobileEnhancementsProps> = ({
     };
   }, [pulling, pullDistance]);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   return (
     <>
       <ScrollIndicator $progress={scrollProgress} />
@@ -252,10 +209,6 @@ export const MobileEnhancements: React.FC<MobileEnhancementsProps> = ({
       </PullToRefreshIndicator>
 
       <LoadingSpinner $visible={loading} />
-
-      <BackToTopButton $visible={showBackToTop} onClick={scrollToTop}>
-        <FiChevronUp />
-      </BackToTopButton>
 
       <div id="hero">{children}</div>
     </>
