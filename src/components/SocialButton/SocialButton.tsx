@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 // Importando ícones das tecnologias
+import { DiRedis } from "react-icons/di";
 import {
   FaCss3Alt,
   FaDatabase,
@@ -13,6 +14,7 @@ import {
   FaPhp,
   FaPython,
   FaReact,
+  FaAws, 
 } from "react-icons/fa";
 import {
   SiBootstrap,
@@ -24,7 +26,6 @@ import {
   SiNestjs,
   SiOpenai,
   SiPostgresql,
-  SiRedis,
   SiSqlalchemy,
   SiSqlite,
   SiStreamlit,
@@ -61,7 +62,8 @@ export type ButtonType =
   | "SQLite"
   | "ChromaDB"
   | "Chart.js"
-  | "Bootstrap";
+  | "Bootstrap"
+  | "AWS";
 export type ButtonStatus = "Default";
 
 interface SocialButtonProps {
@@ -112,7 +114,7 @@ const getTechnologyIcon = (
     case "Postgresql":
       return <SiPostgresql size={iconSize} />;
     case "Redis":
-      return <SiRedis size={iconSize} />;
+      return <DiRedis size={iconSize} />;
     case "Docker":
       return <SiDocker size={iconSize} />;
     case "SQLAlchemy":
@@ -131,6 +133,8 @@ const getTechnologyIcon = (
       return <SiChartdotjs size={iconSize} />;
     case "Bootstrap":
       return <SiBootstrap size={iconSize} />;
+    case "AWS":
+      return <FaAws size={iconSize} />;
     case "LinkedIn":
       return <FaLinkedin size={iconSize} />;
     case "Instagram":
@@ -203,6 +207,8 @@ const getBackgroundColor = (type: ButtonType) => {
       return "#FF6384"; // Cor rosa para Chart.js
     case "Bootstrap":
       return "#7952B3"; // Cor roxa oficial do Bootstrap
+    case "AWS":
+      return "#FF9900"; // Cor laranja oficial da AWS
     case "LinkedIn":
       return "#0077B5";
     case "Instagram":

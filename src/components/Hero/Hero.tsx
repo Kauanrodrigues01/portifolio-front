@@ -247,6 +247,7 @@ const technologies: { type: ButtonType; label: string }[] = [
   { type: "NestJs", label: "NestJS" },
   { type: "Postgresql", label: "PostgreSQL" },
   { type: "Redis", label: "Redis" },
+  { type: "AWS", label: "AWS" },
 ];
 
 export const Hero: React.FC = () => {
