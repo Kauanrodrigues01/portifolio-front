@@ -1,5 +1,5 @@
-import React from "react";
-import { FiArrowLeft, FiExternalLink, FiGithub } from "react-icons/fi";
+import React, { useState, useEffect } from "react";
+import { FiArrowLeft, FiExternalLink, FiGithub, FiX } from "react-icons/fi";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { SocialButton } from "../components/SocialButton";
@@ -72,9 +72,113 @@ const ProjectImage = styled.img`
   object-fit: cover;
   border-radius: 16px;
   box-shadow: ${({ theme }) => theme.shadows.lg};
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: ${({ theme }) => theme.shadows.xl};
+  }
 
   @media (max-width: 768px) {
     height: 250px;
+  }
+`;
+
+const ModalOverlay = styled.div<{ $isOpen: boolean }>`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: ${({ $isOpen }) => ($isOpen ? "flex" : "none")};
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  animation: ${({ $isOpen }) => ($isOpen ? "fadeIn" : "fadeOut")} 0.3s ease;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+`;
+
+const ModalContent = styled.div`
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ModalImage = styled.img`
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: ${({ theme }) => theme.shadows.xl};
+  animation: scaleIn 0.3s ease;
+
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+`;
+
+const CloseButton = styled.button`
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  background: ${({ theme }) => theme.colors.surface};
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  color: ${({ theme }) => theme.colors.text};
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  background: ${({ theme }) => theme.colors.surface}ee;
+  z-index: 10;
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.mainRed};
+    color: white;
+    border-color: ${({ theme }) => theme.colors.mainRed};
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 768px) {
+    top: -15px;
+    right: -15px;
+    width: 44px;
+    height: 44px;
   }
 `;
 
@@ -258,11 +362,46 @@ const NotFound = styled.div`
 export const ProjectDetailsPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const project = projectsData.find((p) => p.id === Number(id));
 
+  // Fechar modal com ESC
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape" && isModalOpen) {
+        setIsModalOpen(false);
+      }
+    };
+
+    if (isModalOpen) {
+      document.addEventListener("keydown", handleKeyDown);
+      // Prevenir scroll do body quando modal estiver aberto
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "unset";
+    };
+  }, [isModalOpen]);
+
   const handleBackClick = () => {
     navigate(-1);
+  };
+
+  const handleImageClick = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleModalOverlayClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) {
+      setIsModalOpen(false);
+    }
   };
 
   const handleLiveUrlClick = () => {
@@ -293,82 +432,99 @@ export const ProjectDetailsPage: React.FC = () => {
   }
 
   return (
-    <PageContainer>
-      <BackButton onClick={handleBackClick}>
-        <FiArrowLeft />
-        Voltar
-      </BackButton>
+    <>
+      <PageContainer>
+        <BackButton onClick={handleBackClick}>
+          <FiArrowLeft />
+          Voltar
+        </BackButton>
 
-      <ProjectHeader>
-        <ProjectImage src={project.image} alt={project.title} />
-        <ProjectTitle>{project.title}</ProjectTitle>
-        <ProjectMeta>
-          <MetaItem>
-            <strong>Categoria:</strong> {project.category}
-          </MetaItem>
-          <MetaItem>
-            <strong>Ano:</strong> {project.year}
-          </MetaItem>
-          <MetaItem>
-            <strong>Duração:</strong> {project.duration}
-          </MetaItem>
-        </ProjectMeta>
-      </ProjectHeader>
+        <ProjectHeader>
+          <ProjectImage 
+            src={project.image} 
+            alt={project.title} 
+            onClick={handleImageClick}
+            title="Clique para ampliar a imagem"
+          />
+          <ProjectTitle>{project.title}</ProjectTitle>
+          <ProjectMeta>
+            <MetaItem>
+              <strong>Categoria:</strong> {project.category}
+            </MetaItem>
+            <MetaItem>
+              <strong>Ano:</strong> {project.year}
+            </MetaItem>
+            <MetaItem>
+              <strong>Duração:</strong> {project.duration}
+            </MetaItem>
+          </ProjectMeta>
+        </ProjectHeader>
 
-      <ContentWrapper>
-        <Section>
-          <SectionTitle>Sobre o Projeto</SectionTitle>
-          <Description>{project.fullDescription}</Description>
-        </Section>
+        <ContentWrapper>
+          <Section>
+            <SectionTitle>Sobre o Projeto</SectionTitle>
+            <Description>{project.fullDescription}</Description>
+          </Section>
 
-        <Section>
-          <SectionTitle>Tecnologias</SectionTitle>
-          <TechStack>
-            {project.technologies.map((tech, index) => (
-              <SocialButton
-                key={`${tech}-${index}`}
-                size="sm"
-                type={tech as any}
-              >
-                {tech === "JS" ? "Javascript" : tech}
-              </SocialButton>
-            ))}
-          </TechStack>
-        </Section>
+          <Section>
+            <SectionTitle>Tecnologias</SectionTitle>
+            <TechStack>
+              {project.technologies.map((tech, index) => (
+                <SocialButton
+                  key={`${tech}-${index}`}
+                  size="sm"
+                  type={tech as any}
+                >
+                  {tech === "JS" ? "Javascript" : tech}
+                </SocialButton>
+              ))}
+            </TechStack>
+          </Section>
 
-        <Section>
-          <SectionTitle>Principais Funcionalidades</SectionTitle>
-          <FeatureList>
-            {project.features.map((feature, index) => (
-              <FeatureItem key={index}>{feature}</FeatureItem>
-            ))}
-          </FeatureList>
-        </Section>
+          <Section>
+            <SectionTitle>Principais Funcionalidades</SectionTitle>
+            <FeatureList>
+              {project.features.map((feature, index) => (
+                <FeatureItem key={index}>{feature}</FeatureItem>
+              ))}
+            </FeatureList>
+          </Section>
 
-        <Section>
-          <SectionTitle>Desafios e Soluções</SectionTitle>
-          <FeatureList>
-            {project.challenges.map((challenge, index) => (
-              <FeatureItem key={index}>{challenge}</FeatureItem>
-            ))}
-          </FeatureList>
-        </Section>
+          <Section>
+            <SectionTitle>Desafios e Soluções</SectionTitle>
+            <FeatureList>
+              {project.challenges.map((challenge, index) => (
+                <FeatureItem key={index}>{challenge}</FeatureItem>
+              ))}
+            </FeatureList>
+          </Section>
 
-        <ActionButtons>
-          {project.liveUrl && (
-            <ActionButton className="primary" onClick={handleLiveUrlClick}>
-              <FiExternalLink />
-              Ver Projeto
-            </ActionButton>
-          )}
-          {project.githubUrl && (
-            <ActionButton className="secondary" onClick={handleGithubClick}>
-              <FiGithub />
-              Ver Código
-            </ActionButton>
-          )}
-        </ActionButtons>
-      </ContentWrapper>
-    </PageContainer>
+          <ActionButtons>
+            {project.liveUrl && (
+              <ActionButton className="primary" onClick={handleLiveUrlClick}>
+                <FiExternalLink />
+                Ver Projeto
+              </ActionButton>
+            )}
+            {project.githubUrl && (
+              <ActionButton className="secondary" onClick={handleGithubClick}>
+                <FiGithub />
+                Ver Código
+              </ActionButton>
+            )}
+          </ActionButtons>
+        </ContentWrapper>
+      </PageContainer>
+
+      {/* Modal para ampliar a imagem */}
+      <ModalOverlay $isOpen={isModalOpen} onClick={handleModalOverlayClick}>
+        <ModalContent>
+          <CloseButton onClick={handleCloseModal} title="Fechar modal">
+            <FiX size={20} />
+          </CloseButton>
+          <ModalImage src={project.image} alt={project.title} />
+        </ModalContent>
+      </ModalOverlay>
+    </>
   );
 };
