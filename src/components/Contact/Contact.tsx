@@ -134,25 +134,25 @@ const socialLinks: SocialLink[] = [
   {
     id: 1,
     label: "Linkedin",
-    href: "https://linkedin.com",
+    href: "https://www.linkedin.com/in/kauan-rodrigues-lima/",
     type: "LinkedIn",
   },
   {
     id: 2,
     label: "Instagram",
-    href: "https://instagram.com",
+    href: "https://instagram.com/kauan_mrl/",
     type: "Instagram",
   },
   {
     id: 3,
     label: "GitHub",
-    href: "https://github.com",
+    href: "https://github.com/Kauanrodrigues01",
     type: "GitHub",
   },
   {
     id: 4,
     label: "E-mail",
-    href: "mailto:martina@example.com",
+    href: "mailto:kauanrl09@gmail.com",
     type: "Email",
   },
 ];
