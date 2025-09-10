@@ -11,6 +11,7 @@
       "CSS",
       "HTML",
       "Javascript",
+      "Chart.js",
       "Docker",
       "Postgresql"
     ],
@@ -232,5 +233,140 @@
     "duration": "2-3 meses",
     "liveUrl": "",
     "githubUrl": "https://github.com/Kauanrodrigues01/flix-app"
+  },
+  {
+    "id": 7,
+    "title": "TeacherHunt API",
+    "description": "API REST robusta para conectar professores e alunos, desenvolvida com Django REST Framework, oferecendo sistema completo de agendamento de aulas, avaliações e gerenciamento de perfis educacionais.",
+    "fullDescription": "TeacherHunt API é uma plataforma educacional desenvolvida com Django REST Framework que facilita a conexão entre professores e alunos. O sistema oferece autenticação JWT completa, gerenciamento de usuários (professores e alunos), sistema de agendamento de aulas com validação de conflitos, sistema de avaliações e comentários, lista de professores favoritos, busca avançada com filtros por preço e avaliação, upload de imagens de perfil, reset de senha via email, e documentação Swagger/OpenAPI. A arquitetura é modular com apps separados para accounts, teachers, students e classroom, incluindo sistema de permissões granulares, testes automatizados com pytest, e containerização com Docker.",
+    "image": "https://raw.githubusercontent.com/Kauanrodrigues01/Kauanrodrigues01/refs/heads/main/images/projetos/teacherhunt/swagger.jpeg",
+    "technologies": [
+      "Python",
+      "Django",
+      "Django REST Framework",
+      "Postgresql",
+      "Docker",
+      "SQLite"
+    ],
+    "features": [
+      "Sistema de autenticação JWT com refresh tokens",
+      "Gerenciamento completo de professores e alunos",
+      "Sistema de agendamento de aulas com validação de conflitos",
+      "Sistema de avaliações e comentários (ratings de 1-5 estrelas)",
+      "Lista de professores favoritos personalizada",
+      "Busca avançada com filtros por preço, avaliação e matéria",
+      "Upload e gerenciamento de fotos de perfil",
+      "Reset de senha seguro via email",
+      "Documentação completa com Swagger/OpenAPI",
+      "Permissões granulares por tipo de usuário",
+      "Cálculo automático de preços das aulas",
+      "Status de aulas (Pendente/Aceita/Cancelada)",
+      "Arquitetura modular com apps separados",
+      "Testes automatizados com pytest",
+      "Containerização completa com Docker",
+      "Suporte a PostgreSQL, MySQL e SQLite",
+      "CORS configurado para integração frontend",
+      "Sistema de população de dados para desenvolvimento"
+    ],
+    "challenges": [
+      "Implementação de sistema de agendamento com validação de conflitos de horário",
+      "Desenvolvimento de autenticação JWT robusta com refresh tokens",
+      "Criação de sistema de permissões granulares para diferentes tipos de usuário",
+      "Arquitetura modular com separação clara de responsabilidades entre apps",
+      "Implementação de busca avançada com múltiplos filtros e ordenação",
+      "Sistema de upload e processamento de imagens com Pillow",
+      "Containerização completa com Docker e docker-compose",
+      "Documentação automática com Swagger/OpenAPI integrada"
+    ],
+    "category": "API/Backend",
+    "year": "2025",
+    "duration": "3-4 meses",
+    "liveUrl": "",
+    "githubUrl": "https://github.com/Kauanrodrigues01/projeto-teacherhunt"
+  },
+  {
+    "id": 8,
+    "title": "Sistema de Eleições do Grêmio Estudantil",
+    "description": "Sistema web completo para automatizar e modernizar o processo eleitoral do Grêmio Estudantil da EEEP Adolfo Ferreira de Sousa, oferecendo votação online segura e dashboards interativos.",
+    "fullDescription": "Sistema de Eleições do Grêmio Estudantil é uma plataforma web robusta desenvolvida com Django para digitalizar completamente o processo democrático estudantil. O sistema oferece registro seguro de votos com validação de matrícula única, controle de participação por turma (12 turmas disponíveis), dashboard administrativo avançado com métricas em tempo real, gráficos interativos Chart.js, ranking dinâmico das chapas, gestão completa de candidaturas via painel Django Admin, sistema de autenticação seguro, interface responsiva Bootstrap 5, prevenção de votos duplicados, análise detalhada por turma e visualização de chapas com fotos. A aplicação é containerizada com Docker, utiliza Nginx como proxy reverso, suporta PostgreSQL/SQLite e está preparada para deploy em produção com SSL/HTTPS.",
+    "image": "https://raw.githubusercontent.com/Kauanrodrigues01/Kauanrodrigues01/refs/heads/main/images/projetos/sistema-eleicoes-gremio/foto-dashboard-eleicoes-gremio.png",
+    "technologies": [
+      "Python",
+      "Django",
+      "Javascript",
+      "Chart.js",
+      "Postgresql",
+      "Docker",
+      "Bootstrap"
+    ],
+    "features": [
+      "Sistema de votação online seguro com validação única",
+      "Dashboard administrativo com métricas em tempo real",
+      "Gráficos interativos e ranking dinâmico das chapas",
+      "Controle de participação por 12 turmas diferentes",
+      "Gestão completa de chapas via Django Admin",
+      "Sistema de autenticação seguro com controle de acesso",
+      "Interface responsiva para desktop e mobile",
+      "Prevenção de votos duplicados por matrícula",
+      "Análise detalhada de resultados por turma",
+      "Upload e visualização de fotos das chapas",
+      "Arquitetura containerizada com Docker",
+      "Configuração para deploy em produção"
+    ],
+    "challenges": [
+      "Implementação de sistema de votação seguro com validação única",
+      "Desenvolvimento de dashboard interativo com Chart.js",
+      "Criação de arquitetura escalável com Django e Docker",
+      "Controle granular de acesso e permissões administrativas",
+      "Otimização de performance para múltiplas turmas simultâneas"
+    ],
+    "category": "Web Application",
+    "year": "2025",
+    "duration": "2-3 meses",
+    "liveUrl": "",
+    "githubUrl": "https://github.com/Kauanrodrigues01/sistema-eleicoes-gremio"
+  },
+  {
+    "id": 9,
+    "title": "Sistema de Biblioteca AFS",
+    "description": "Sistema web completo para gerenciamento de biblioteca escolar desenvolvido com Django, oferecendo controle de acervo, empréstimos e consulta pública com interface responsiva.",
+    "fullDescription": "Sistema de Biblioteca AFS é uma aplicação web robusta desenvolvida com Django para gerenciamento completo de bibliotecas escolares. O sistema oferece duas interfaces distintas: uma área pública para consulta do acervo com busca em tempo real por título, autor ou gênero, e uma área administrativa para gestão completa de livros e empréstimos. Inclui controle automático de disponibilidade, monitoramento de status de empréstimos (em dia, vencendo, atrasado), sistema de autenticação seguro, comandos personalizados para população de dados, e arquitetura preparada para produção com Docker, Nginx e suporte tanto para SQLite quanto PostgreSQL. O projeto foi desenvolvido especificamente para atender cursos técnicos (Desenvolvimento de Sistemas, Administração, Enfermagem, Informática e Logística) com interface responsiva e funcionalidades avançadas de relatórios.",
+    "image": "https://raw.githubusercontent.com/Kauanrodrigues01/Kauanrodrigues01/refs/heads/main/images/projetos/sistema-biblioteca-afs/imagem-emprestimos.png",
+    "technologies": [
+      "Python",
+      "Django",
+      "Postgresql",
+      "Docker",
+      "HTML",
+      "CSS",
+      "Javascript"
+    ],
+    "features": [
+      "Sistema de autenticação seguro para bibliotecários",
+      "Consulta pública de acervo com busca em tempo real",
+      "Gestão completa de empréstimos com controle de datas",
+      "Status automático de empréstimos (em dia/vencendo/atrasado)",
+      "CRUD completo de livros com informações detalhadas",
+      "Controle automático de disponibilidade de livros",
+      "Interface responsiva para desktop e mobile",
+      "Comandos personalizados Django para administração",
+      "Suporte a múltiplos cursos técnicos",
+      "Painel administrativo Django integrado",
+      "Deploy automatizado com Docker e Nginx",
+      "População automática de dados via JSON"
+    ],
+    "challenges": [
+      "Arquitetura robusta para produção com Docker e Nginx",
+      "Sistema de monitoramento automático de status de empréstimos",
+      "Interface dual (pública e administrativa) com diferentes níveis de acesso",
+      "Implementação de busca dinâmica em tempo real com JavaScript",
+      "Controle automático de disponibilidade sincronizado com empréstimos",
+      "Comandos personalizados Django para gestão automatizada"
+    ],
+    "category": "Web Application",
+    "year": "2025",
+    "duration": "2-3 meses",
+    "liveUrl": "",
+    "githubUrl": "https://github.com/gledyson007/Biblioteca-AFS"
   }
 ]

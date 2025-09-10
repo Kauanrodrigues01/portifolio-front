@@ -15,6 +15,8 @@ import {
   FaReact,
 } from "react-icons/fa";
 import {
+  SiBootstrap,
+  SiChartdotjs,
   SiDjango,
   SiDocker,
   SiFastapi,
@@ -57,7 +59,9 @@ export type ButtonType =
   | "LangChain"
   | "OpenAI"
   | "SQLite"
-  | "ChromaDB";
+  | "ChromaDB"
+  | "Chart.js"
+  | "Bootstrap";
 export type ButtonStatus = "Default";
 
 interface SocialButtonProps {
@@ -123,6 +127,10 @@ const getTechnologyIcon = (
       return <SiSqlite size={iconSize} />;
     case "ChromaDB":
       return <VscJson size={iconSize} />;
+    case "Chart.js":
+      return <SiChartdotjs size={iconSize} />;
+    case "Bootstrap":
+      return <SiBootstrap size={iconSize} />;
     case "LinkedIn":
       return <FaLinkedin size={iconSize} />;
     case "Instagram":
@@ -191,6 +199,10 @@ const getBackgroundColor = (type: ButtonType) => {
       return "#003B57";
     case "ChromaDB":
       return "#FF6B6B"; // Cor coral para ChromaDB
+    case "Chart.js":
+      return "#FF6384"; // Cor rosa para Chart.js
+    case "Bootstrap":
+      return "#7952B3"; // Cor roxa oficial do Bootstrap
     case "LinkedIn":
       return "#0077B5";
     case "Instagram":
