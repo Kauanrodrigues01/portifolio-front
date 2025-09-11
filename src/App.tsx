@@ -8,7 +8,12 @@ import { MobileEnhancements } from "./components/MobileEnhancements";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { ThemeProvider, useTheme } from "./contexts/ThemeContext";
 import { useMobileScroll, useMobileViewport } from "./hooks/useTouchGestures";
-import { AssistantPage, HomePage, ProjectDetailsPage } from "./pages";
+import {
+  AssistantPage,
+  ExperienceDetailsPage,
+  HomePage,
+  ProjectDetailsPage,
+} from "./pages";
 import { GlobalStyles } from "./styles/GlobalStyles";
 
 const AppContainer = styled.div`
@@ -44,6 +49,10 @@ const AppContent: React.FC = () => {
               <Route path="/" element={<HomePage />} />
               <Route path="/assistant" element={<AssistantPage />} />
               <Route path="/projeto/:id" element={<ProjectDetailsPage />} />
+              <Route
+                path="/experiencia/:id"
+                element={<ExperienceDetailsPage />}
+              />
             </Routes>
           </AppContainer>
         </MobileEnhancements>

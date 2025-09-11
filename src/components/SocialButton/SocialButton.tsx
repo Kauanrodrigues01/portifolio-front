@@ -18,12 +18,14 @@ import {
 } from "react-icons/fa";
 import {
   SiBootstrap,
+  SiCelery,
   SiChartdotjs,
   SiDjango,
   SiDocker,
   SiFastapi,
   SiLangchain,
   SiNestjs,
+  SiNextdotjs,
   SiOpenai,
   SiPostgresql,
   SiSqlalchemy,
@@ -52,6 +54,7 @@ export type ButtonType =
   | "FastAPI"
   | "React"
   | "NestJs"
+  | "Next.js"
   | "Postgresql"
   | "Redis"
   | "Docker"
@@ -63,7 +66,8 @@ export type ButtonType =
   | "ChromaDB"
   | "Chart.js"
   | "Bootstrap"
-  | "AWS";
+  | "AWS"
+  | "Celery";
 export type ButtonStatus = "Default";
 
 interface SocialButtonProps {
@@ -111,6 +115,8 @@ const getTechnologyIcon = (
       return <SiFastapi size={iconSize} />;
     case "NestJs":
       return <SiNestjs size={iconSize} />;
+    case "Next.js":
+      return <SiNextdotjs size={iconSize} />;
     case "Postgresql":
       return <SiPostgresql size={iconSize} />;
     case "Redis":
@@ -135,6 +141,8 @@ const getTechnologyIcon = (
       return <SiBootstrap size={iconSize} />;
     case "AWS":
       return <FaAws size={iconSize} />;
+    case "Celery":
+      return <SiCelery size={iconSize} />;
     case "LinkedIn":
       return <FaLinkedin size={iconSize} />;
     case "Instagram":
@@ -151,7 +159,6 @@ const getTextColor = (type: ButtonType) => {
     case "JS":
     case "Javascript":
     case "React":
-      return "#000000"; // Texto preto para fundos claros
     default:
       return "#FFFFFF"; // Texto branco para fundos escuros
   }
@@ -185,6 +192,8 @@ const getBackgroundColor = (type: ButtonType) => {
       return "#00D8FF";
     case "NestJs":
       return "#E0234E";
+    case "Next.js":
+      return "#000000";
     case "Postgresql":
       return "#316192";
     case "Redis":
@@ -209,6 +218,8 @@ const getBackgroundColor = (type: ButtonType) => {
       return "#7952B3"; // Cor roxa oficial do Bootstrap
     case "AWS":
       return "#FF9900"; // Cor laranja oficial da AWS
+    case "Celery":
+      return "#37B24D"; // Cor verde do Celery
     case "LinkedIn":
       return "#0077B5";
     case "Instagram":

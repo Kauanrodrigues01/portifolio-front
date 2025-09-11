@@ -1,7 +1,9 @@
 import React from "react";
 import { FiBriefcase } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import experiencesData from "../../data/experiences.json";
+import { processExperienceData } from "../../utils/dateUtils";
 import { ExperienceCard } from "../ExperienceCard";
 
 const ExperiencesSection = styled.section`
@@ -134,12 +136,13 @@ const ExperienceSection = styled.div<{ $featured?: boolean }>`
 `;
 
 export const Experiences: React.FC = () => {
-  // Usar experiências na ordem do JSON (já ordenadas)
-  const experiences = experiencesData;
+  const navigate = useNavigate();
+
+  // Processar experiências para calcular automaticamente period e duration
+  const experiences = experiencesData.map(processExperienceData);
 
   const handleExperienceClick = (experienceId: number) => {
-    // Futuramente podemos implementar um modal ou página de detalhes
-    console.log(`Clicked experience: ${experienceId}`);
+    navigate(`/experiencia/${experienceId}`);
   };
 
   return (

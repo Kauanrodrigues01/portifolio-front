@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FiBriefcase, FiCalendar, FiMapPin } from "react-icons/fi";
 import styled from "styled-components";
 import { SocialButton } from "../SocialButton";
@@ -62,12 +62,34 @@ const Header = styled.div`
   margin-bottom: 16px;
 `;
 
-const CompanyLogo = styled.img`
+const CompanyLogo = styled.img<{ $hasError?: boolean }>`
   width: 56px;
   height: 56px;
   border-radius: 12px;
   object-fit: cover;
   border: 2px solid ${({ theme }) => theme.colors.border};
+  display: ${({ $hasError }) => ($hasError ? "none" : "block")};
+`;
+
+const DefaultLogo = styled.div<{ $show?: boolean }>`
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  border: 2px solid ${({ theme }) => theme.colors.border};
+  background: linear-gradient(
+    135deg,
+    ${({ theme }) => theme.colors.mainBlue}20,
+    ${({ theme }) => theme.colors.mainBlue}40
+  );
+  display: ${({ $show }) => ($show ? "flex" : "none")};
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 24px;
+    height: 24px;
+    color: ${({ theme }) => theme.colors.mainBlue};
+  }
 `;
 
 const CompanyInfo = styled.div`
@@ -206,10 +228,27 @@ export const ExperienceCard: React.FC<ExperienceCardProps> = ({
   featured = false,
   onClick,
 }) => {
+  const [imageError, setImageError] = useState(false);
+
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
   return (
     <CardContainer $featured={featured} onClick={onClick}>
       <Header>
-        <CompanyLogo src={companyLogo} alt={`${company} logo`} />
+        {companyLogo && companyLogo.trim() !== "" && !imageError ? (
+          <CompanyLogo
+            src={companyLogo}
+            alt={`${company} logo`}
+            onError={handleImageError}
+            $hasError={imageError}
+          />
+        ) : (
+          <DefaultLogo $show={true}>
+            <FiBriefcase />
+          </DefaultLogo>
+        )}
         <CompanyInfo>
           <Position>{position}</Position>
           <Company>{company}</Company>
@@ -247,7 +286,7 @@ export const ExperienceCard: React.FC<ExperienceCardProps> = ({
       <Section>
         <SectionTitle>Principais Conquistas</SectionTitle>
         <AchievementList>
-          {achievements.slice(0, 3).map((achievement, index) => (
+          {achievements.map((achievement, index) => (
             <AchievementItem key={index}>{achievement}</AchievementItem>
           ))}
         </AchievementList>

@@ -1,104 +1,82 @@
 [
   {
     "id": 1,
-    "company": "TechFlow Solutions",
-    "position": "Desenvolvedor Frontend Sênior",
-    "period": "Mar 2023 - Presente",
-    "duration": "1 ano e 6 meses",
-    "location": "São Paulo, SP (Remoto)",
-    "type": "Tempo Integral",
-    "description": "Desenvolvimento de aplicações web modernas utilizando React, TypeScript e Next.js. Liderança técnica de uma equipe de 4 desenvolvedores frontend, implementação de arquiteturas escaláveis e otimização de performance.",
+    "company": "Ltecnologia",
+    "position": "Desenvolvedor Back-End",
+    "startDate": "Nov 2024",
+    "endDate": "Presente",
+    "location": "Ceará, Brasil (Remoto)",
+    "type": "Freelancer",
+    "description": "Atuei como desenvolvedor back-end Python/Django, contribuindo para o desenvolvimento de sistemas web completos, com foco em alta performance, escalabilidade e entregas rápidas. Implementei integrações de APIs, soluções de cache, páginas web responsivas e etc...",
     "responsibilities": [
-      "Desenvolvimento de interfaces responsivas e acessíveis",
-      "Implementação de testes automatizados com Jest e Testing Library",
-      "Mentoria de desenvolvedores juniores",
-      "Code review e definição de padrões de código",
-      "Integração com APIs REST e GraphQL",
-      "Otimização de performance e SEO"
+      "Desenvolvimento de sistemas web com Django e DRF",
+      "Integração de APIs de pagamento e WhatsApp",
+      "Implementação de cache e otimização de queries",
+      "Criação de dashboards administrativos e painéis de clientes",
+      "Automação de tarefas assíncronas com Celery",
+      "Deploy e manutenção de aplicações em ambiente Docker e AWS",
+      "Integração de inteligência artificial com LangChain e OpenAI"
     ],
-    "technologies": ["React", "TypeScript", "Next.js", "Tailwind CSS", "GraphQL", "Jest"],
+    "technologies": [
+      "Python",
+      "Django",
+      "Django REST Framework",
+      "Redis",
+      "Celery",
+      "Docker",
+      "AWS",
+      "HTML",
+      "CSS",
+      "Javascript",
+      "LangChain",
+      "OpenAI"
+    ],
     "achievements": [
-      "Reduziu o tempo de carregamento das páginas em 40%",
-      "Implementou sistema de design consistente usado por toda a empresa",
-      "Liderou migração de JavaScript para TypeScript"
+      "Desenvolvi um sistema de gestão de alunos que atendeu 70% das academias do município de Palmácia-CE",
+      "Gerenciei aproximadamente 10.000 mensalidades em operação por quase um ano",
+      "Implementei cache e reduzi o tempo de carregamento das páginas em até 30%",
+      "Desenvolvi um sistema de delivery com pedidos e vendas com controle de status, entrega, pagamentos e dashboards completos",
+      "Adicionei rotas assíncronas que melhoraram o tempo de resposta em até 20%"
     ],
-    "companyLogo": "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=64&h=64&fit=crop&crop=center",
+    "companyLogo": "",
     "featured": true
   },
   {
     "id": 2,
-    "company": "Digital Innovations",
-    "position": "Desenvolvedor Full Stack",
-    "period": "Jan 2022 - Fev 2023",
-    "duration": "1 ano e 2 meses", 
-    "location": "Rio de Janeiro, RJ",
-    "type": "Tempo Integral",
-    "description": "Desenvolvimento de soluções completas utilizando React no frontend e Node.js no backend. Trabalho em projetos para diversos clientes, desde startups até grandes corporações.",
-    "responsibilities": [
-      "Desenvolvimento de aplicações web full stack",
-      "Criação de APIs RESTful com Node.js e Express",
-      "Gerenciamento de bancos de dados MySQL e MongoDB",
-      "Deploy e manutenção de aplicações na AWS",
-      "Participação em reuniões com clientes",
-      "Estimativas de tempo e planejamento de sprints"
-    ],
-    "technologies": ["React", "Node.js", "Express", "MySQL", "MongoDB", "AWS", "Docker"],
-    "achievements": [
-      "Desenvolveu 8 projetos completos para diferentes clientes",
-      "Implementou arquitetura de microserviços que reduziu custos em 25%",
-      "Treinou 3 estagiários que foram efetivados"
-    ],
-    "companyLogo": "https://images.unsplash.com/photo-1549923746-c502d488b3ea?w=64&h=64&fit=crop&crop=center",
-    "featured": true
-  },
-  {
-    "id": 3,
-    "company": "StartupXYZ",
-    "position": "Desenvolvedor Frontend Júnior",
-    "period": "Jun 2021 - Dez 2021",
-    "duration": "7 meses",
-    "location": "Belo Horizonte, MG (Híbrido)",
-    "type": "Tempo Integral", 
-    "description": "Primeiro emprego como desenvolvedor, focado no desenvolvimento de uma plataforma SaaS para gestão de pequenas empresas. Aprendizado intensivo e crescimento rápido em um ambiente startup.",
-    "responsibilities": [
-      "Desenvolvimento de componentes React reutilizáveis",
-      "Implementação de designs criados no Figma",
-      "Correção de bugs e melhorias de UX",
-      "Participação em daily meetings e retrospectivas",
-      "Documentação de código e processos"
-    ],
-    "technologies": ["React", "JavaScript", "CSS", "HTML", "Git", "Figma"],
-    "achievements": [
-      "Desenvolveu 15+ componentes reutilizáveis",
-      "Reduziu bugs em produção em 30% através de code reviews",
-      "Contribuiu para aumento de 20% na satisfação dos usuários"
-    ],
-    "companyLogo": "https://images.unsplash.com/photo-1572021335469-31706a17aaef?w=64&h=64&fit=crop&crop=center",
-    "featured": false
-  },
-  {
-    "id": 4,
-    "company": "FreelanceWork",
-    "position": "Desenvolvedor Web Freelancer",
-    "period": "Jan 2021 - Mai 2021",
-    "duration": "5 meses",
-    "location": "Remoto",
+    "company": "704 Apps",
+    "position": "Desenvolvedor Back-End | Full-Stack",
+    "startDate": "Fev 2025",
+    "endDate": "Set 2025",
+    "location": "Ceará, Brasil (Remoto)",
     "type": "Freelancer",
-    "description": "Desenvolvimento de websites e landing pages para pequenas empresas e empreendedores. Foco em sites responsivos, rápidos e otimizados para conversão.",
+    "description": "Atuei no desenvolvimento de aplicações de mobilidade urbana, com foco no back-end em NestJS e Prisma ORM, além de contribuir com funcionalidades no front-end utilizando Next.js e TypeScript. Trabalhei na integração de soluções de inteligência artificial para análise de conteúdo hostil, visando a prevenção de ameaças a motoristas de aplicativo.",
     "responsibilities": [
-      "Desenvolvimento de websites responsivos",
-      "Criação de landing pages otimizadas",
-      "Integração com ferramentas de analytics",
-      "Otimização de SEO básico",
-      "Suporte e manutenção dos sites"
+      "Desenvolvimento de endpoints REST com NestJS e Prisma ORM",
+      "Integração de endpoints com o front-end e serviços existentes",
+      "Implementação de testes unitários e de integração para garantir qualidade e confiabilidade do código",
+      "Identificação e correção de bugs de validação e inconsistências de dados",
+      "Contribuição para o front-end com Next.js e React",
+      "Integração de soluções de inteligência artificial utilizando Python, LangChain e OpenAI",
+      "Análise de conteúdo hostil para prevenção de ameaças a motoristas de aplicativo"
     ],
-    "technologies": ["HTML", "CSS", "JavaScript", "WordPress", "PHP"],
+    "technologies": [
+      "Javascript",
+      "TypeScript",
+      "NestJs",
+      "React",
+      "Next.js",
+      "Python",
+      "LangChain",
+      "OpenAI"
+    ],
     "achievements": [
-      "Entregou 12 projetos com 100% de satisfação do cliente",
-      "Desenvolveu sistema de templates reutilizáveis",
-      "Conquistou 5 clientes recorrentes"
+      "Transformei endpoints mockados em endpoints reais e integrados ao sistema",
+      "Implementei testes unitários e de integração, aumentando a confiabilidade da aplicação",
+      "Corrigi bugs críticos de validação que poderiam comprometer a segurança dos dados",
+      "Contribuí para a evolução do front-end, fortalecendo minhas habilidades em React e Next.js",
+      "Implementei solução de prevenção de ameaças a motoristas de aplicativo com análise de conteúdo hostil baseada em IA"
     ],
-    "companyLogo": "https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?w=64&h=64&fit=crop&crop=center",
-    "featured": false
+    "companyLogo": "https://media.licdn.com/dms/image/v2/C4E0BAQH18DYYToJEaw/company-logo_100_100/company-logo_100_100/0/1644253065456/fabrica704_logo?e=1760572800&v=beta&t=nIPIIZdwaQHF6cCBNWwrZyh1WXR-XPZbfmTCIndUQEg",
+    "featured": true
   }
 ]
