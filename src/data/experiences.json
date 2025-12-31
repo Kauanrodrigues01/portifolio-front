@@ -25,7 +25,7 @@
       "Docker",
       "Redis",
       "Celery",
-      "PostgreSQL",
+      "Postgresql",
       "pgvector"
     ],
     "achievements": [
