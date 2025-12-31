@@ -3,6 +3,7 @@ import styled from "styled-components";
 // Importando ícones das tecnologias
 import { DiRedis } from "react-icons/di";
 import {
+  FaAws,
   FaCss3Alt,
   FaDatabase,
   FaEnvelope,
@@ -14,7 +15,6 @@ import {
   FaPhp,
   FaPython,
   FaReact,
-  FaAws, 
 } from "react-icons/fa";
 import {
   SiBootstrap,
@@ -34,6 +34,7 @@ import {
   SiTypescript,
 } from "react-icons/si";
 import { VscJson } from "react-icons/vsc";
+import n8nIconSvg from "../../assets/icons/n8n-icon.svg";
 
 export type ButtonSize = "sm" | "md";
 export type ButtonType =
@@ -67,7 +68,8 @@ export type ButtonType =
   | "Chart.js"
   | "Bootstrap"
   | "AWS"
-  | "Celery";
+  | "Celery"
+  | "N8N";
 export type ButtonStatus = "Default";
 
 interface SocialButtonProps {
@@ -143,6 +145,14 @@ const getTechnologyIcon = (
       return <FaAws size={iconSize} />;
     case "Celery":
       return <SiCelery size={iconSize} />;
+    case "N8N":
+      return (
+        <img
+          src={n8nIconSvg}
+          alt="N8N"
+          style={{ width: iconSize, height: iconSize }}
+        />
+      );
     case "LinkedIn":
       return <FaLinkedin size={iconSize} />;
     case "Instagram":
@@ -220,6 +230,8 @@ const getBackgroundColor = (type: ButtonType) => {
       return "#FF9900"; // Cor laranja oficial da AWS
     case "Celery":
       return "#37B24D"; // Cor verde do Celery
+    case "N8N":
+      return "#EA4B71"; // Cor rosa oficial do N8N
     case "LinkedIn":
       return "#0077B5";
     case "Instagram":

@@ -5,10 +5,10 @@ import { ButtonType, SocialButton } from "../SocialButton";
 
 const HeroSection = styled.section`
   display: flex;
-  padding: 80px 32px 120px 32px;
+  padding: 80px 0 120px 0;
   justify-content: center;
   align-items: center;
-  align-self: stretch;
+  width: 100%;
   background: linear-gradient(
     135deg,
     ${({ theme }) => theme.colors.background} 0%,
@@ -44,12 +44,12 @@ const HeroSection = styled.section`
   }
 
   @media (max-width: 1024px) {
-    padding: 60px 24px 80px 24px;
+    padding: 60px 0 80px 0;
     min-height: 90vh;
   }
 
   @media (max-width: 768px) {
-    padding: 40px 20px 60px 20px;
+    padding: 40px 0 60px 0;
     min-height: 80vh;
   }
 `;
@@ -58,14 +58,20 @@ const InfoContainer = styled.div`
   display: flex;
   width: 100%;
   max-width: 800px;
+  padding: 0 32px;
   flex-direction: column;
   align-items: center;
   gap: 60px;
   position: relative;
   z-index: 1;
 
+  @media (max-width: 1024px) {
+    padding: 0 24px;
+  }
+
   @media (max-width: 768px) {
     gap: 40px;
+    padding: 0 20px;
   }
 `;
 
@@ -248,12 +254,13 @@ const technologies: { type: ButtonType; label: string }[] = [
   { type: "Postgresql", label: "PostgreSQL" },
   { type: "Redis", label: "Redis" },
   { type: "AWS", label: "AWS" },
+  { type: "N8N", label: "N8N" },
 ];
 
 export const Hero: React.FC = () => {
   return (
-    <HeroSection id="hero">
-      <InfoContainer>
+    <HeroSection>
+      <InfoContainer id="hero">
         <HeaderContainer>
           <AvatarWrapper>
             <UserContainer>

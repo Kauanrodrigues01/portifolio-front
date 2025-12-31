@@ -1,6 +1,46 @@
 [
-  {
+    {
     "id": 1,
+    "company": "Somos Octa",
+    "position": "Desenvolvedor Back-End Python/Django",
+    "startDate": "Set 2025",
+    "endDate": "Presente",
+    "location": "Brasil (Remoto)",
+    "type": "Estágio",
+    "description": "Atuei como Desenvolvedor Back-End Python/Django no desenvolvimento e evolução de soluções de biometria facial (reconhecimento facial), autenticação inteligente e processamento de documentos, com forte foco em performance, segurança e escalabilidade. Contribuí de forma estratégica na refatoração da infraestrutura, otimização de pipelines de deploy, desenvolvimento de APIs críticas e adoção de boas práticas de engenharia de software, entregando um ambiente mais estável, enxuto e confiável para o produto.",
+    "responsibilities": [
+      "Desenvolvimento e manutenção de APIs REST para cadastro e autenticação de usuários",
+      "Implementação de fluxos de autenticação biométrica por reconhecimento facial e biometria da mão",
+      "Refatoração completa da infraestrutura Docker e pipelines de deploy",
+      "Adoção de boas práticas de arquitetura, segurança e organização de código",
+      "Otimização de tarefas assíncronas com Celery e correção de falhas em processos críticos",
+      "Migração e implementação de soluções de reconhecimento facial com maior precisão e desempenho",
+      "Trabalho com embeddings biométricos e bancos de dados vetoriais",
+      "Padronização de ambiente de desenvolvimento, documentação técnica e linting de código"
+    ],
+    "technologies": [
+      "Python",
+      "Django",
+      "Django REST Framework",
+      "Docker",
+      "Redis",
+      "Celery",
+      "PostgreSQL",
+      "pgvector"
+    ],
+    "achievements": [
+      "Redução de aproximadamente 85% no uso de armazenamento das imagens Docker (de ~30 GB para ~4 GB)",
+      "Aceleração significativa do tempo de build e inicialização do ambiente de produção",
+      "Aumento da precisão e confiabilidade do reconhecimento biométrico com a migração para InsightFace",
+      "Melhoria da estabilidade e observabilidade do sistema com healthchecks e ajustes de startup",
+      "Maior confiabilidade no processamento assíncrono e nas validações de documentos",
+      "Infraestrutura mais consistente, facilitando o onboarding e a produtividade do time"
+    ],
+    "companyLogo": "",
+    "featured": true
+  },
+  {
+    "id": 2,
     "company": "Ltecnologia",
     "position": "Desenvolvedor Back-End",
     "startDate": "Nov 2024",
@@ -42,7 +82,7 @@
     "featured": true
   },
   {
-    "id": 2,
+    "id": 3,
     "company": "704 Apps",
     "position": "Desenvolvedor Back-End | Full-Stack",
     "startDate": "Fev 2025",
