@@ -375,10 +375,10 @@ const SuggestionButton = styled.button`
 `;
 
 const suggestions = [
-  "Fale sobre suas tecnologias favoritas",
-  "Como posso entrar em contato?",
-  "Quais projetos você desenvolveu?",
-  "Conte sobre sua experiência",
+  "Quais são as tecnologias favoritas do Kauan?",
+  "Como posso entrar em contato com o Kauan?",
+  "Quais projetos o Kauan desenvolveu?",
+  "Conte sobre a experiência profissional do Kauan",
 ];
 
 export const AssistantPage: React.FC = () => {
