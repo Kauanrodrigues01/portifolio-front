@@ -274,7 +274,7 @@ export const Hero: React.FC = () => {
                 <NameSpan>Kauan Rodrigues</NameSpan>
                 <RegularSpan> e sou</RegularSpan>
               </IntroText>
-              <MainTitle>Desenvolvedor Full Stack</MainTitle>
+              <MainTitle>Desenvolvedor Backend</MainTitle>
             </TitleContainer>
             <Description>
               Transformo necessidades em aplicações reais, evolventes e
